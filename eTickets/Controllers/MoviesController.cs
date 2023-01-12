@@ -13,8 +13,9 @@ namespace eTickets.Controllers
         }
         public async Task<IActionResult> Index()
         {
-            var allProducers = await _context.Movies.ToListAsync();
-            return View();
+            //Include() підгружає всі пов'язані з Cinama хедери цього класу, щоб можна було юзати item.Cinema.Name
+            var allMovies = await _context.Movies.Include(n=>n.Cinema).OrderBy(n=>n.Name).ToListAsync();
+            return View(allMovies);
         }
     }
 }
