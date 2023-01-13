@@ -1,38 +1,41 @@
-﻿@model Actor
+﻿@model Producer
 
 @{
-	ViewData["Title"] = "Updating an actor";
+	ViewData["Title"] = "Delete producer";
 }
 <div class="row text">
 	<div class="col-md-8 offset-2">
-		<p><h1>Add a new actor</h1></p>
+		<p><h1>Delete confirmation for @Model.FullName</h1></p>
 		<div class="row">
 			<div class="col-md-8 offset-2">
-			<form asp-action="Edit" method="post">
-				<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+				
 					<div class="form-group text-center">
 						<img id="ProfilePicturePreview" />
 					</div>
 					<div class="form-group">
 						<label asp-for="ProfilePictureULR" class="controle-label"></label>
-						<input asp-for="ProfilePictureULR" class="form-control" />
+						<input asp-for="ProfilePictureULR" class="form-control" readonly/>
 						<span asp-validation-for="ProfilePictureULR" class="text-danger"></span>
 					</div>
 					<div class="form-group">
 						<label asp-for="FullName" class="controle-label"></label>
-						<input asp-for="FullName" class="form-control" />
+					<input asp-for="FullName" class="form-control" readonly />
 						<span asp-validation-for="FullName" class="text-danger"></span>
 					</div>
 					<div class="form-group">
 						<label asp-for="Bio" class="controle-label"></label>
-						<input asp-for="Bio" class="form-control" />
+					<input asp-for="Bio" class="form-control" readonly />
 						<span asp-validation-for="Bio" class="text-danger"></span>
 					</div>
 					<div class="form-group">
-						<input type="submit" value="Update" class="btn btn-outline-success float-end create-btn"/>
-						<a class="btn btn-outline-secondary" asp-action="Index" asp-controller="Actors">Show all</a>
+						<form asp-action="Delete" method="post">
+							<input type="hidden" asp-for="Id"/>
+							<input type="submit" value="Confirm" class="btn btn-danger float-right" asp-for="Id"/>
+						</form>
+						<a class="btn btn-outline-success float-right" asp-action="Edit" asp-route-id="@Model.Id">Edit</a>
+						<a class="btn btn-outline-secondary" asp-action="Index" asp-controller="Producers">Show all</a>
 					</div>
-				</form>	
+
 			</div>
 		</div>
 	</div>
@@ -41,10 +44,6 @@
 
 @section Scripts{
 	<script>
-		$("ProfilePictureULR").on("change", function () {
-			alert("start of jquery");
-			var output = document.getElementById('ProfilePicturePreview');
-			output.src = $(this).val();
-		})
+	
 	</script>
 }

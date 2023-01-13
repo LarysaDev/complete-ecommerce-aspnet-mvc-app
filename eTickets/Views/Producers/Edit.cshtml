@@ -1,7 +1,7 @@
-﻿@model Actor
+﻿@model Producer
 
 @{
-	ViewData["Title"] = "Updating an actor";
+	ViewData["Title"] = "Updating the producer";
 }
 <div class="row text">
 	<div class="col-md-8 offset-2">
@@ -30,7 +30,7 @@
 					</div>
 					<div class="form-group">
 						<input type="submit" value="Update" class="btn btn-outline-success float-end create-btn"/>
-						<a class="btn btn-outline-secondary" asp-action="Index" asp-controller="Actors">Show all</a>
+						<a class="btn btn-outline-secondary" asp-action="Index" asp-controller="Producers">Show all</a>
 					</div>
 				</form>	
 			</div>
@@ -41,10 +41,6 @@
 
 @section Scripts{
 	<script>
-		$("ProfilePictureULR").on("change", function () {
-			alert("start of jquery");
-			var output = document.getElementById('ProfilePicturePreview');
-			output.src = $(this).val();
-		})
+		
 	</script>
 }
